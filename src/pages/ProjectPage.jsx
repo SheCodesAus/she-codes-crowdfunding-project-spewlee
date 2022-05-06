@@ -1,6 +1,8 @@
 import React, { useState, UseEffect, useEffect } from "react";
 import { useParams } from "react-router-dom";
 
+//Components
+import PledgeForm from "../components/PledgeForm/PledgeForm";
 
 // Data
 import { oneProject } from "../data";
@@ -45,6 +47,7 @@ if (!projectData) {
                     );
                 })}
             </ul>
+            <PledgeForm projectId={id} />
         </div>
     );
 }
