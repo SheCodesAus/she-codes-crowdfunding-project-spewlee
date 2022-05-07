@@ -17,7 +17,7 @@ function ProjectPage() {
 
     // Actions and Helpers
     useEffect(() => {
-        fetch(`${process.env.REACT_APP_API_URL}projects.${id}1`)
+        fetch(`${process.env.REACT_APP_API_URL}projects/${id}`)
             .then((results) => {
                 return results.json();
             })
