@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
-function UserForm() {
+function UserForm({ userId }) {
     // States
     const token =  window.localStorage.getItem("token")
     const [user, setUser] = useState({
@@ -24,7 +24,7 @@ function UserForm() {
         event.preventDefault();
           try {
             const res = await fetch(
-              `${process.env.REACT_APP_API_URL}users/${id}`,
+              `${process.env.REACT_APP_API_URL}users/`,
               {
                 method: "post",
                 headers: ({
@@ -32,6 +32,7 @@ function UserForm() {
                   "Authorization": `Bearer ${token}`,
                 }),
                 body: JSON.stringify({
+                    id: userId,
                     email: user.email,
                     admin: user.admin,
                     club: user.club,

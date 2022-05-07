@@ -4,9 +4,6 @@ import { useParams } from "react-router-dom";
 //Components
 import PledgeForm from "../components/PledgeForm/PledgeForm";
 
-// Data
-import { oneProject } from "../data";
-
 function ProjectPage() {
 
     // State

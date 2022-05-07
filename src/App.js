@@ -8,8 +8,8 @@ import Nav from "./components/Nav/Nav";
 import HomePage from "./pages/HomePage";
 import ProjectPage from "./pages/ProjectPage";
 import LoginPage from "./pages/LoginPage";
-import ProfilePage from ".pages/ProfilePage";
-import RegisterUserPage from ".pages/RegisterUserPage";
+import ProfilePage from "./pages/ProfilePage";
+import RegisterUserPage from "./pages/RegisterUserPage";
 
 // Styles
 import "./App.css";
