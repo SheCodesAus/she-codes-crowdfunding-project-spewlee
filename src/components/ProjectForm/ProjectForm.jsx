@@ -14,6 +14,9 @@ function ProjectForm() {
         due_date: "",
     });
 
+    // Hooks
+    const navigate = useNavigate();
+
 // Actions and Helpers
     const handleChange = (event) => {
         const { id, value } = event.target;
@@ -44,7 +47,7 @@ function ProjectForm() {
               }
             );
             const data = await res.json();
-            useNavigate("/");
+            navigate("/");
           } catch (err) {
             console.log(err);
           }
