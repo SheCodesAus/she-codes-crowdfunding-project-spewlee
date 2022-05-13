@@ -34,8 +34,19 @@ function LoginForm() {
                 body: JSON.stringify(credentials),
               }
             );
-            const data = await response.json();
-            window.localStorage.setItem("token", data.token);
+            const secondResponse = await fetch(
+                `${process.env.REACT_APP_API_URL}users/`,
+                {
+                  method: "post",
+                  headers: {
+                    "Content-Type": "application/json",
+                  },
+                  body: JSON.stringify(credentials),
+                }
+              );
+            const tokenData = await response.json();
+            const data = await secondResponse.json();
+            window.localStorage.setItem("token", tokenData.token);
             window.localStorage.setItem("id", data.id);
             if (data.token === undefined) {
                 return (

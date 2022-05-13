@@ -36,7 +36,7 @@ function Nav() {
 
     const checkProfile = () => {
         const isUserLoggedIn = !!window.localStorage.getItem("token");
-        return !isUserLoggedIn ? <div className="nav-button"><Link to="/users/register">Create account</Link></div> : <div className="nav-button"><Link to={`users/${id}`}>My Profile</Link></div>
+        return !isUserLoggedIn ? <div className="nav-button"><Link to="/register">Create account</Link></div> : <div className="nav-button"><Link to={`users/${id}`}>My Profile</Link></div>
     }
 
     const createProject = () => {
