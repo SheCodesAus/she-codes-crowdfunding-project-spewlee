@@ -56,8 +56,8 @@ function RegisterUserForm() {
               );
             const data = await response.json();
             const tokenData = await tokenResponse.json();
-            window.localStorage.setItem("token", tokenData.token);
             window.localStorage.setItem("id",data.id);
+            window.localStorage.setItem("token", tokenData.token);
             if (data.token === undefined) {
                 return (
                     <div>
