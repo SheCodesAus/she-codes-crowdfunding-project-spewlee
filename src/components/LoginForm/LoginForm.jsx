@@ -36,10 +36,20 @@ function LoginForm() {
             );
             const data = await response.json();
             window.localStorage.setItem("token", data.token);
-            navigate("/");
-          } catch (err) {
-            console.log(err);
-          }
+            window.localStorage.setItem("id", data.id);
+            if (data.token === undefined) {
+                return (
+                    <div>
+                        <h1>Unable to create account!</h1>
+                    </div>
+                );
+            }
+            else {
+                navigate("/");
+            };
+            } catch (err) {
+                console.log(err);
+            }
         }
       };
 

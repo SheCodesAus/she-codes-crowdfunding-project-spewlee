@@ -32,10 +32,26 @@ function RegisterUserForm() {
                 headers: {
                   "Content-Type": "application/json",
                 },
-                body: JSON.stringify(credentials),
+                body: JSON.stringify({
+                    username: credentials.username,
+                    email: credentials.email,
+                    password: credentials.password
+                }),
               }
             );
-            navigate("/");
+            const data = await response.json();
+            window.localStorage.setItem("token", data.token);
+            window.localStorage.setItem("id",data.id);
+            if (data.token === undefined) {
+                return (
+                    <div>
+                        <h1>Unable to create account!</h1>
+                    </div>
+                );
+            }
+            else {
+                navigate("/");
+            };
           } catch (err) {
             console.log(err);
           }
