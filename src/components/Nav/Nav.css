@@ -4,6 +4,8 @@ nav {
     grid-template-rows: 1;
     grid-template-columns: 5% 15% 15% 30% 10% 10% 10% 5%;
     color: #2E3047;
+    justify-content: center;
+    align-content: center;
 }
 
 .logoDiv {
@@ -13,7 +15,7 @@ nav {
 }
 
 .logoDiv img {
-    flex: 1;
+    max-width: 100%;
 }
 
 .profileBut {

@@ -35,23 +35,14 @@ function RegisterUserForm() {
                 body: JSON.stringify({
                     username: credentials.username,
                     email: credentials.email,
-                    password: credentials.password
+                    password: credentials.password,
+                    admin: false,
+                    profile_pic : "",
                 }),
               }
             );
-            const secondResponse = await fetch(
-                `${process.env.REACT_APP_API_URL}api-token-auth/`,
-                {
-                  method: "post",
-                  headers: {
-                    "Content-Type": "application/json",
-                  },
-                  body: JSON.stringify(credentials),
-                }
-              );
-            const tokenData = await response.json();
-            const data = await secondResponse.json();
-            window.localStorage.setItem("token", tokenData.token);
+            const data = await response.json();
+            window.localStorage.setItem("token", data.token);
             window.localStorage.setItem("id",data.id);
             if (data.token === undefined) {
                 return (
