@@ -1,9 +1,9 @@
 .heroImage {
-    background-image: url(/src/images/BackgroundImage.jpg);
+    background:rgba(0, 0, 0, 0.7) url(/src/images/BackgroundImage.jpg);
     background-repeat: no-repeat;
     background-size: cover;
     display: flex;
-    height: 20vh;
+    height: 35vh;
   }
   
   .heroImage button {
@@ -13,6 +13,8 @@
     border-radius: 25%;
     border: white 1em;
     margin: 3em;
+    height: 2em;
+    width: 50%;
   }
   
   .heroImage h1 {
