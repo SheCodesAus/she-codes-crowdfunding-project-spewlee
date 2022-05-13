@@ -1,0 +1,29 @@
+nav {
+    background-color: #707793;
+    display: grid;
+    grid-template-rows: 1;
+    grid-template-columns: 5% 15% 15% 30% 10% 10% 10% 5%;
+    color: #2E3047;
+}
+
+.logoDiv {
+    background-color: #3BBA9C;
+    grid-column: 2 / span 1;
+    display: flex;
+}
+
+.logoDiv img {
+    flex: 1;
+}
+
+.profileBut {
+    grid-column: 5 / span 1;
+}
+
+.homeBut {
+    grid-column: 6 / span 1;
+}
+
+.log {
+    grid-column: 7 / span 1;
+}

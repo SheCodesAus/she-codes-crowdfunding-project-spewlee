@@ -1,17 +1,22 @@
 import React, { useState } from "react";
 import { Link, useNavigate, Router, useParams } from "react-router-dom";
 
+// Styles
+import "./Nav.css"
+
+// Images
+import logo from "../../images/SportSupport.png"
+
 function Nav() {
 
     //State
     const [usersData, setUsersData] = useState();
 
-        //Hooks
-    
+    //Hooks
     const navigate = useNavigate();
     const { id } = useParams();
 
-    const username = window.localStorage.getItem("username")
+    const username = window.localStorage.getItem("id")
 
 
     const reloadPage = () => {
@@ -20,7 +25,7 @@ function Nav() {
 
     const handleSignOut = () => {
         window.localStorage.removeItem("token");
-        window.localStorage.removeItem("username")
+        window.localStorage.removeItem("id")
         reloadPage()
     }
 
@@ -40,10 +45,13 @@ function Nav() {
     }
     
     return(
-        <nav className="navHeader">
-            <div>{checkProfile()}</div>
-            <div><Link to="/">Home</Link></div>
-            <div>{checkUser()}</div>
+        <nav className="nav">
+            <div className="logoDiv">
+                <Link to="/"><img className="logo" src={logo}/></Link>
+            </div>
+            <div className="profileBut">{checkProfile()}</div>
+            <div className="homeBut"><Link to="/">Home</Link></div>
+            <div className="log">{checkUser()}</div>
         </nav>
     )
 }
