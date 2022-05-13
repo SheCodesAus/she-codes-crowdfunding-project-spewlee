@@ -41,8 +41,25 @@ function RegisterUserForm() {
                 }),
               }
             );
+            const tokenResponse = await fetch(
+                `${process.env.REACT_APP_API_URL}api-token-auth/`,
+                {
+                  method: "post",
+                  headers: {
+                    "Content-Type": "application/json",
+                  },
+                  body: JSON.stringify({
+                      username: credentials.username,
+                      email: credentials.email,
+                      password: credentials.password,
+                      admin: false,
+                      profile_pic : "https://images.nightcafe.studio//assets/profile.png?tr=w-1600,c-at_max,"
+                  }),
+                }
+              );
             const data = await response.json();
-            window.localStorage.setItem("token", data.token);
+            const tokenData = await tokenResponse.json();
+            window.localStorage.setItem("token", tokenData.token);
             window.localStorage.setItem("id",data.id);
             if (data.token === undefined) {
                 return (
