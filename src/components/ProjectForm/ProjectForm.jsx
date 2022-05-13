@@ -17,7 +17,7 @@ function ProjectForm() {
 // Actions and Helpers
     const handleChange = (event) => {
         const { id, value } = event.target;
-        setPledges((prevProject) => ({
+        setProjects((prevProject) => ({
             ...prevProject,
             [id]: value,
         }));
