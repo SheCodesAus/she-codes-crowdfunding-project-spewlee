@@ -4,7 +4,9 @@ import { useNavigate } from "react-router-dom";
 //CSS
 import "./HeroImage.css";
 
-const handleClick = useNavigate("/create-project")
+// Hooks
+const navigate = useNavigate();
+const handleClick = navigate("/create-project")
 
 function HeroImage() {
     return(
