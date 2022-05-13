@@ -1,0 +1,19 @@
+.heroImage {
+    background-image: url(/src/images/BackgroundImage.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+  }
+  
+  .heroImage button {
+    flex: 1;
+    background-color: #3bba9c;
+    color: #2E3047;
+    border-radius: 25%;
+    border: white 1em;
+  }
+  
+  .heroImage h1 {
+    flex: 1;
+    color: white;
+  }

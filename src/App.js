@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route, useNavigate } from "react-route
 
 // Components
 import Nav from "./components/Nav/Nav";
+import HeroImage from "./components/HeroImage/HeroImage";
 
 // Pages
 import HomePage from "./pages/HomePage";
@@ -21,6 +22,7 @@ function App() {
     <Router>
       <div>
         <Nav />
+        <HeroImage />
         <Routes>
           <Route path="/login" element={<LoginPage />} />
           <Route path="/users/:id" element={<ProfilePage />} />
@@ -29,10 +31,6 @@ function App() {
           <Route path="/register" element={<RegisterUserPage />} />
           <Route path="/create-project" element={<CreateProjectPage />} />
         </Routes>
-        <div className="heroImage">
-          <button onclick={useNavigate("/create-project")}>Post a Project</button>
-          <h1>Achieve your team's dream</h1>
-        </div>
       </div>
     </Router>
   );
