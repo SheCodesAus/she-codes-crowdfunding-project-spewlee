@@ -41,7 +41,7 @@ function Nav() {
 
     const createProject = () => {
         const isUserLoggedIn = !!window.localStorage.getItem("token");
-        return !isUserLoggedIn ? <div className="nav-button"><Link to="/create-project">Create Project</Link></div> : ""
+        return !isUserLoggedIn ? <div className="nav-button"><Link to="/create-project">Create Project</Link></div> : <div></div>
     }
     
     return(
@@ -49,6 +49,7 @@ function Nav() {
             <div className="logoDiv">
                 <Link to="/"><img className="logo" src={logo}/></Link>
             </div>
+            <div className="createProject">{createProject()}</div>
             <div className="profileBut">{checkProfile()}</div>
             <div className="homeBut"><Link to="/">Home</Link></div>
             <div className="log">{checkUser()}</div>
