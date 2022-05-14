@@ -55,7 +55,7 @@ function UserForm({ userId }) {
                     onChange={handleChange}
                 />
             </div>
-            <button type="submit" onClick={handleSubmit}>Sumbit</button>
+            <button type="submit" onClick={handleSubmit}>Submit</button>
         </form>
     );
 }

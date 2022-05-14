@@ -9,9 +9,13 @@ import "./HeroImage.css";
 function HeroImage() {
 
     // Hooks
-    const navigate = useNavigate();
-    const handleClick = navigate("/create-project") 
-    
+    const navigate = useNavigate("/create-project");
+
+    // Actions
+    const handleClick = () => {
+        return navigate;
+    }
+
     return(
         <div className="heroImage">
           <button onclick={ handleClick }>Post a Project</button>
