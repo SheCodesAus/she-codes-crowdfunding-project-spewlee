@@ -1,15 +1,15 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 function UserForm({ userId }) {
     // States
     const token =  window.localStorage.getItem("token")
     const [user, setUser] = useState({
-        email: "",
-        admin: "",
-        club: "",
         profile_pic: "",
     });
+
+// Hooks
+    const navigate = useNavigate();
 
 // Actions and Helpers
     const handleChange = (event) => {
@@ -31,16 +31,13 @@ function UserForm({ userId }) {
                   "Content-Type": "application/json",
                   "Authorization": `Bearer ${token}`,
                 }),
-                body: JSON.stringify({
-                    id: userId,
-                    email: user.email,
-                    admin: user.admin,
-                    club: user.club,
+                body: JSON.stringify({ 
                     profile_pic: user.profile_pic,
                 }),
               }
             );
             const data = await res.json();
+            navigate('/');
           } catch (err) {
             console.log(err);
           }
@@ -49,38 +46,12 @@ function UserForm({ userId }) {
 
     return (
         <form>
-            <div> 
-                <label htmlFor="email">Email:</label>
-                <input 
-                    type="text"
-                    id="email"
-                    placeholder="Enter Email"
-                    onChange={handleChange}
-                />
-            </div>
             <div>
                 <label htmlFor="profile_pic">Profile Photo:</label>
                 <input 
                     type="text"
                     id="profile_pic"
                     placeholder="EnterImage URL"
-                    onChange={handleChange}
-                />
-            </div>
-            <div>
-                <label htmlFor="admin">Admin of a club?:</label>
-                <input 
-                    type="checkbox"
-                    id="admin"
-                    onChange={handleChange}
-                />
-            </div>
-            {/* Look at making this be a drop down of the clubs created */}
-            <div>
-                <label htmlFor="club">Club:</label>
-                <input 
-                    type="text"
-                    id="club"
                     onChange={handleChange}
                 />
             </div>

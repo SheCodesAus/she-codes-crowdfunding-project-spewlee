@@ -8,7 +8,6 @@ function ProjectForm() {
     const [project, setProjects] = useState({
         title: "",
         description: "",
-        other_ways_to_help: "",
         image: "",
         goal_amount: 0,
         due_date: "",
@@ -40,9 +39,10 @@ function ProjectForm() {
                 body: JSON.stringify({
                     title: project.title,
                     description: project.description,
-                    other_ways_to_help: project.other_ways_to_help,
+                    amount: 0,
                     goal_amount: project.goal_amount,
                     image: project.image,
+                    date_created: Date.now(),
                 }),
               }
             );
@@ -57,7 +57,7 @@ function ProjectForm() {
     if (!token) {
         return (
             <Link to="/login">Please login to create a project.</Link>
-        );
+        )
     }
 
     return (
@@ -80,17 +80,8 @@ function ProjectForm() {
                     onChange={handleChange}
                 />
             </div>
-            <div>
-                <label htmlFor="other_ways_to_help">Other Ways To Help:</label>
-                <input 
-                    type="text"
-                    id="other_ways_to_help"
-                    placeholder="Enter Text.."
-                    onChange={handleChange}
-                />
-            </div>
             <div> 
-                <label htmlFor="image">Amount:</label>
+                <label htmlFor="image">Image:</label>
                 <input 
                     type="text"
                     id="image"
