@@ -8,6 +8,7 @@ function RegisterUserForm() {
         password: "",
         email: "",
     });
+    const token =  window.localStorage.getItem("token")
 
 // Hooks
     const navigate = useNavigate();
@@ -28,6 +29,7 @@ function RegisterUserForm() {
               method: "post",
               headers: {
                 "Content-Type": "application/json",
+                "Authorization": `Bearer ${token}`
               },
               body: JSON.stringify({
                   username: credentials.username,
