@@ -24,12 +24,12 @@ function App() {
         <Nav />
         <HeroImage />
         <Routes>
+          <Route path="/register" element={<RegisterUserPage />} />
+          <Route path="/create-project" element={<CreateProjectPage />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/users/:id" element={<ProfilePage />} />
           <Route path="/project/:id" element={<ProjectPage />} />
           <Route path="/" element={<HomePage />} />
-          <Route path="/register" element={<RegisterUserPage />} />
-          <Route path="/create-project" element={<CreateProjectPage />} />
         </Routes>
       </div>
     </Router>
