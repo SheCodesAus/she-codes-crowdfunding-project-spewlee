@@ -21,6 +21,23 @@ function RegisterUserForm() {
         }));
     };
 
+    const postData = async () => {
+        const response = await fetch(
+            `${process.env.REACT_APP_API_URL}api-token-auth/`,
+            {
+              method: "post",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify({
+                  username: credentials.username,
+                  password: credentials.password,
+              }),
+            }
+          );
+          return response.json();
+        };
+
     const handleSubmit = async (event) => {
         event.preventDefault();
         if (credentials.username && credentials.password) {
@@ -41,23 +58,12 @@ function RegisterUserForm() {
                 }),
               }
             );
-            const tokenResponse = await fetch(
-                `${process.env.REACT_APP_API_URL}api-token-auth/`,
-                {
-                  method: "post",
-                  headers: {
-                    "Content-Type": "application/json",
-                  },
-                  body: JSON.stringify({
-                      username: credentials.username,
-                      password: credentials.password,
-                  }),
-                }
-              );
             const data = await response.json();
-            const tokenData = await tokenResponse.json();
             window.localStorage.setItem("id",data.id);
-            window.localStorage.setItem("token", tokenData.token);
+            postData().then((response) => {
+                window.localStorage.setItem("token", response.token);
+            });
+            
             if (data.token === undefined) {
                 return (
                     <div>
