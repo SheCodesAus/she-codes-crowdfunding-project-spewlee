@@ -55,16 +55,30 @@ function HomePage() {
 
             </Container>
 
-            <div id="project-list">
-                {projectList.map((projectData) => {
-                    return (
-                        <ProjectCard
-                            key={`project-${projectData.id}`}
-                            projectData={projectData} 
-                        />
-                    );
-                })}
-            </div>
+            <Container>
+                <Container className="row py-lg-5 text-center">
+                    <div className="col-lg-6 col-md-8 mx-auto">
+                        <h2>Current Projects</h2>
+                        <p>Check out some of the latest Sport Support projects! We hope that you find one that reasonates with you.</p>
+                    </div>
+
+                </Container>
+
+                <div className="album py-5 bg-light">
+                    <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3" id="project-list">
+                        {projectList.map((projectData) => {
+                            return (
+                                <ProjectCard
+                                    key={`project-${projectData.id}`}
+                                    projectData={projectData} 
+                                />
+                            );
+                        })}
+                    </div>
+                </div>
+
+            </Container>
+            
 
         </Container>
     );
