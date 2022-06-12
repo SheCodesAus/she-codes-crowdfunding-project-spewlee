@@ -1,7 +1,6 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
 
-import { Form, Button } from "react-bootstrap";
+import { Form, Button, Alert, Container } from "react-bootstrap";
 
 function PledgeForm({ projectId }) {
     // States
@@ -41,6 +40,9 @@ function PledgeForm({ projectId }) {
               }
             );
             const data = await res.json();
+            <Alert variant="success">
+                <Alert.Heading>Pledged Successfully!</Alert.Heading>
+            </Alert>
           } catch (err) {
             console.log(err);
           }
@@ -49,7 +51,12 @@ function PledgeForm({ projectId }) {
 
     if (!token) {
         return (
-            <Link to="/login">Please login to pledge to this amazing project</Link>
+            <Container>
+                <p class="lead fw-bold title">Please Login To Pledge</p>
+                <a href="/login" class="btn btn-secondary text-light fw-bold" role="button">
+                Login
+                </a>
+            </Container>
         );
     }
 

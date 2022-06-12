@@ -1,37 +1,40 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
 // Bootstrap
-import {} from "react-bootstrap";
+import { Card, Button } from "react-bootstrap";
 
-// // Styles
-// import "./ProjectCard.css"
+//Components
+import PledgeModal from "../PledgeModal/PledgeModal";
 
 function ProjectCard({ projectData }) {
-    return (
-        <div class="card" style="width: 18rem;">
-            <Link to={`/project/${projectData?.id}`}>
-                <img src={projectData?.img} class="card-img-top" alt="alt={`${projectData?.title}`}"/>
-                <div class="card-body">
-                    <h3 class="card-title">{projectData?.title}</h3>
-                    
-                    <div class="progress">
-                        <div class="progress-bar" role="progressbar" style="width: 25%" aria-valuenow={projectData?.amount_raised} aria-valuemin="0" aria-valuemax={projectData?.goal_amount}></div>
-                    </div>
+    // States
+    const [show, setShow] = useState(false);
 
-                    <a href={`/project/${projectData?.id}`} class="btn btn-primary text-light fw-bold" role="button">
-                        Pledge
-                    </a>
-                </div>
+    // Actions
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
+
+    return (
+
+        <Card style={{ width: '18rem' }}>
+            <Link to={`/project/${projectData?.id}`}>
+                <Card.Img variant="top" src={projectData?.img} />
+                <Card.Body>
+                    <Card.Title>{projectData?.title}</Card.Title>
+                    <div class="progress">
+                        <div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow={projectData?.amount_raised} aria-valuemin="0" aria-valuemax={projectData?.goal_amount}></div>
+                    </div>
+                </Card.Body>
             </Link>
-        </div>
-        
-        // {/* <div className="project-card">
-        //     <Link to={`/project/${projectData.id}`}>
-        //         <img src={projectData.image} alt="the project" />
-        //         <h3>{projectData.title}</h3>
-        //     </Link>
-        // </div> */}
+            <Card.Body>
+                <Button variant="primary" onClick={handleShow}>
+                    Pledge
+                </Button>
+                <PledgeModal projectData={projectData} />
+            </Card.Body>
+            
+        </Card>
     );
 }
 

@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import {  useNavigate } from "react-router-dom";
 
 // Bootstrap
-import { Form, Button } from "react-bootstrap";
+import { Form, Button, Container, Alert } from "react-bootstrap";
 
 function ProjectForm() {
     // States
@@ -41,7 +41,7 @@ function ProjectForm() {
                 body: JSON.stringify({
                     title: project.title,
                     description: project.description,
-                    amount: 0,
+                    amount_raised: 0,
                     goal_amount: project.goal_amount,
                     image: project.image,
                     date_created: Date.now(),
@@ -49,6 +49,9 @@ function ProjectForm() {
               }
             );
             const data = await res.json();
+            <Alert variant="success">
+                <Alert.Heading>Project Created!</Alert.Heading>
+            </Alert>
             navigate("/");
           } catch (err) {
             console.log(err);
@@ -58,8 +61,13 @@ function ProjectForm() {
 
     if (!token) {
         return (
-            <Link to="/login">Please login to create a project.</Link>
-        )
+            <Container>
+                <p class="lead fw-bold title">Please Login To Pledge</p>
+                <a href="/login" class="btn btn-secondary text-light fw-bold" role="button">
+                Login
+                </a>
+            </Container>
+        );
     }
 
     return (

@@ -1,12 +1,10 @@
 import React from "react";
-import { Link } from "react-router-dom";
 
 // Bootstrap
 import { Container } from "react-bootstrap";
 
 //Components
 import LoginForm from "../components/LoginForm/LoginForm";
-import { Button } from "bootstrap";
 
 function LoginPage() {
     return (

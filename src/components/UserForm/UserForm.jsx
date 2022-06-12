@@ -1,8 +1,12 @@
 import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
-function UserForm({ userId }) {
+// Bootstrap 
+import { Alert, Form, Button } from "react-bootstrap";
+
+function UserForm({ userData }) {
     // States
+    const { id } = useParams;
     const token =  window.localStorage.getItem("token")
     const [user, setUser] = useState({
         profile_pic: "",
@@ -24,7 +28,7 @@ function UserForm({ userId }) {
         event.preventDefault();
           try {
             const res = await fetch(
-              `${process.env.REACT_APP_API_URL}users/`,
+              `${process.env.REACT_APP_API_URL}users/${id}`,
               {
                 method: "post",
                 headers: ({
@@ -37,6 +41,9 @@ function UserForm({ userId }) {
               }
             );
             const data = await res.json();
+            <Alert variant="success">
+                <Alert.Heading>Updated Profile Photo Successfully!</Alert.Heading>
+            </Alert>
             navigate('/');
           } catch (err) {
             console.log(err);
@@ -45,18 +52,20 @@ function UserForm({ userId }) {
 
 
     return (
-        <form>
-            <div>
-                <label htmlFor="profile_pic">Profile Photo:</label>
-                <input 
-                    type="text"
-                    id="profile_pic"
-                    placeholder="EnterImage URL"
-                    onChange={handleChange}
-                />
-            </div>
-            <button type="submit" onClick={handleSubmit}>Submit</button>
-        </form>
+      <Form className="p-4 m-5 rounded-3 login">
+        <h1 className="h3 mb-3 fw-normal text-center">
+        Update Profile Photo
+        </h1>
+
+        <Form.Group className="mb-3">
+            <Form.Label for="profile_pic">Username</Form.Label>
+            <Form.Control type="text" placeholder="Enter Profile Photo URL" id="profile_pic" onChange={handleChange} />
+            </Form.Group>
+            
+        <Button className="w-100 btn btn-lg fw-bold" variant="primary" type="submit" onSubmit={handleSubmit}>
+        Update
+        </Button>
+      </Form>
     );
 }
 

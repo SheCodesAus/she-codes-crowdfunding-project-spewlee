@@ -1,8 +1,5 @@
 import React from 'react';
 
-// Bootstrap
-import { Button } from 'react-bootstrap';
-
 // Custom Styles
 import './HeroImage.css';
   
