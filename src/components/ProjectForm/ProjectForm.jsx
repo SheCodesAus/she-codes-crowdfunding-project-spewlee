@@ -1,6 +1,8 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+
+// Bootstrap
+import { Form, Button } from "react-bootstrap";
 
 function ProjectForm() {
     // States
@@ -61,54 +63,40 @@ function ProjectForm() {
     }
 
     return (
-        <form>
-            <div>
-                <label htmlFor="title">Title:</label>
-                <input 
-                    type="text"
-                    id="title"
-                    placeholder="Enter Title.."
-                    onChange={handleChange}
-                />
-            </div>
-            <div>
-                <label htmlFor="description">Description:</label>
-                <input 
-                    type="text"
-                    id="description"
-                    placeholder="Enter Description.."
-                    onChange={handleChange}
-                />
-            </div>
-            <div> 
-                <label htmlFor="image">Image:</label>
-                <input 
-                    type="text"
-                    id="image"
-                    placeholder="Enter Image URL"
-                    onChange={handleChange}
-                />
-            </div>
-            <div>
-                <label htmlFor="goal_amount">Goal Amount:</label>
-                <input 
-                    type="number"
-                    id="goal_amount"
-                    placeholder="Enter Goal Amount.."
-                    onChange={handleChange}
-                />
-            </div>
-            <div>
-                <label htmlFor="due_date">Due Date:</label>
-                <input 
-                    type="date"
-                    id="due_date"
-                    placeholder="Enter Due Date.."
-                    onChange={handleChange}
-                />
-            </div>
-            <button type="submit" onClick={handleSubmit}>Submit</button>
-        </form>
+        <Form className="p-4 m-5 rounded-3 login">
+            <h1 className="h3 mb-3 fw-normal text-center">
+            Create A Project
+            </h1>
+
+            <Form.Group className="mb-3">
+                <Form.Label for="title">Title:</Form.Label>
+                <Form.Control type="text" className="form-control" placeholder="Enter Title" id="title" onChange={handleChange}/>
+            </Form.Group>
+
+            <Form.Group className="mb-3">
+                <Form.Label for="description">Description:</Form.Label>
+                <Form.Control type="text" className="form-control" placeholder="Enter Description" id="description" onChange={handleChange}/>
+            </Form.Group>
+
+            <Form.Group className="mb-3">
+                <Form.Label for="image">Image:</Form.Label>
+                <Form.Control type="text" className="form-control" placeholder="Enter Image URL" id="image" onChange={handleChange}/>
+            </Form.Group>
+
+            <Form.Group className="mb-3">
+                <Form.Label for="goal_amount">Goat Amount:</Form.Label>
+                <Form.Control type="number" className="form-control" placeholder="Enter Goal Amount.." id="goal_amount" onChange={handleChange}/>
+            </Form.Group>
+
+            <Form.Group className="mb-3">
+                <Form.Label for="due_date">Due Date:</Form.Label>
+                <Form.Control type="date" className="form-control" placeholder="Enter Due Date.." id="due_date" onChange={handleChange}/>
+            </Form.Group>
+                
+            <Button className="w-100 btn btn-lg fw-bold" variant="primary" type="submit" onClick={handleSubmit}>
+            Submit Project
+            </Button>
+        </Form>
     );
 }
 

@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
+// Bootstrap
+import { Form, Button } from "react-bootstrap";
+
 function RegisterUserForm() {
 // States
     const [credentials, setCredentials] = useState({
@@ -82,36 +85,25 @@ function RegisterUserForm() {
       };
 
     return (
-        <form>
-            <div> 
-                <label htmlFor="username">Username:</label>
-                <input 
-                    type="text"
-                    id="username"
-                    placeholder="Enter Username"
-                    onChange={handleChange}
-                />
-            </div>
-            <div>
-                <label htmlFor="email">Email:</label>
-                <input 
-                    type="text"
-                    id="email"
-                    placeholder="email"
-                    onChange={handleChange}
-                />
-            </div>
-            <div>
-                <label htmlFor="password">Password:</label>
-                <input 
-                    type="password"
-                    id="password"
-                    placeholder="Password"
-                    onChange={handleChange}
-                />
-            </div>
-            <button type="submit" onClick={handleSubmit}>Create Account</button>
-        </form>
+        <Form className="p-4 m-5 rounded-3 login">
+            <h1 className="h3 mb-3 fw-normal text-center">
+            Create An Account
+            </h1>
+
+            <Form.Group className="mb-3" controlId="formBasicUsername">
+                <Form.Label for="username">Username</Form.Label>
+                <Form.Control type="text" placeholder="Enter Username" id="username" onChange={handleChange} />
+                </Form.Group>
+
+            <Form.Group className="mb-3" controlId="formBasicPassword">
+                <Form.Label for="password">Password</Form.Label>
+                <Form.Control type="password" placeholder="Password" id="password" onChange={handleChange} />
+            </Form.Group>
+                
+            <Button className="w-100 btn btn-lg fw-bold" variant="primary" type="submit" onSumbit={handleSubmit}>
+            Create Account
+            </Button>
+        </Form>
     );
 }
 

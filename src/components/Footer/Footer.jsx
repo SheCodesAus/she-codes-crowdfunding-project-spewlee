@@ -19,15 +19,14 @@ function Footer() {
 
                 <Nav className="col-md-4 justify-content-end">
                         <NavItem>
-                            <NavLink className="nav-link px-2 text-muted" as={Link} to="/">Home</NavLink>
+                            <NavLink className="nav-link px-2 text-muted" as={Link} to="https://github.com/spewlee">
+                                <i class="bi bi-github" />
+                            </NavLink>
                         </NavItem>
-                        
                         <NavItem>
-                            <NavLink className="nav-link px-2 text-muted" as={Link} to="/login">Login</NavLink>
-                        </NavItem>
-                        
-                        <NavItem>
-                            <NavLink className="nav-link px-2 text-muted" as={Link} to="/create-project">Create Project</NavLink>
+                            <NavLink className="nav-link px-2 text-muted" as={Link} to="https://www.linkedin.com/in/sueleechristie/">
+                                <i class="bi bi-linkedin" />
+                            </NavLink>
                         </NavItem>
                 </Nav>
                 
