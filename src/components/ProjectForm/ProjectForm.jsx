@@ -7,6 +7,7 @@ import { Form, Button, Container, Alert } from "react-bootstrap";
 function ProjectForm() {
     // States
     const token =  window.localStorage.getItem("token")
+    const userId = window.localStorage.getItem("id")
     const [project, setProjects] = useState({
         title: "",
         description: "",
@@ -45,6 +46,9 @@ function ProjectForm() {
                     goal_amount: project.goal_amount,
                     image: project.image,
                     date_created: Date.now(),
+                    due_date: project.due_date,
+                    owner_id: userId,
+
                 }),
               }
             );
@@ -87,17 +91,17 @@ function ProjectForm() {
             </Form.Group>
 
             <Form.Group className="mb-3">
-                <Form.Label for="image">Image:</Form.Label>
+                <Form.Label htmlFor="image">Image:</Form.Label>
                 <Form.Control type="text" className="form-control" placeholder="Enter Image URL" id="image" onChange={handleChange}/>
             </Form.Group>
 
             <Form.Group className="mb-3">
-                <Form.Label for="goal_amount">Goat Amount:</Form.Label>
+                <Form.Label htmlFor="goal_amount">Goat Amount:</Form.Label>
                 <Form.Control type="number" className="form-control" placeholder="Enter Goal Amount.." id="goal_amount" onChange={handleChange}/>
             </Form.Group>
 
             <Form.Group className="mb-3">
-                <Form.Label for="due_date">Due Date:</Form.Label>
+                <Form.Label htmlFor="due_date">Due Date:</Form.Label>
                 <Form.Control type="date" className="form-control" placeholder="Enter Due Date.." id="due_date" onChange={handleChange}/>
             </Form.Group>
                 

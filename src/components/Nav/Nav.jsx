@@ -11,6 +11,11 @@ import './Nav.css';
 import logo from "../../images/SportSupport.png"
 
 function NavBar() {
+   
+    let id = window.localStorage.getItem("id")
+    let profileUrl =(`users/${id}`)
+    let username = window.localStorage.getItem("username")
+    let isUserLoggedIn = window.localStorage.getItem("token");
     
     return(
         <>
@@ -23,14 +28,24 @@ function NavBar() {
                         <NavItem>
                             <NavLink className="mx-auto fs-3" as={Link} to="/">Home</NavLink>
                         </NavItem>
+
+                        {isUserLoggedIn ? (
+                            <NavItem>
+                                <NavLink className="mx-auto fs-3" as={Link} to={profileUrl}>{username}</NavLink>
+                            </NavItem>
+                        ) : (
+                            ""
+                        )}
                         
-                        <NavItem>
-                            <NavLink className="mx-auto fs-3" as={Link} to="/login">Login</NavLink>
-                        </NavItem>
-                        
-                        <NavItem>
-                            <NavLink className="mx-auto fs-3" as={Link} to="/create-project">Create Project</NavLink>
-                        </NavItem>
+                        {isUserLoggedIn ? (
+                            <NavItem>
+                                <NavLink className="mx-auto fs-3" as={Link} to="/logout">Logout</NavLink>
+                            </NavItem>
+                        ) : (
+                            <NavItem>
+                                <NavLink className="mx-auto fs-3" as={Link} to="/login">Login</NavLink>
+                            </NavItem>
+                        )}
                         
                     </Nav>
                 </Navbar.Collapse>

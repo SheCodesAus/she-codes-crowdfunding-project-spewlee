@@ -60,7 +60,7 @@ function PledgeForm({ projectId }) {
                 <Form.Control type="text" placeholder="comment.." id="comment" onChange={handleChange} />
             </Form.Group>
 
-            <Button className="w-100 btn btn-lg fw-bold" variant="primary" type="submit" onSubmit={handleSubmit}>
+            <Button className="w-100 btn btn-lg fw-bold" variant="primary" type="submit" onClick={handleSubmit}>
             Submit Comment
             </Button>
         </Form>

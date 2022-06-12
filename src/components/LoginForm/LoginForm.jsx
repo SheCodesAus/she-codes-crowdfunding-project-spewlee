@@ -31,7 +31,7 @@ function LoginForm() {
         if (credentials.username && credentials.password) {
           try {
             const response = await fetch(
-              `${process.env.REACT_APP_API_URL}api-token-auth/`,
+              `${process.env.REACT_APP_API_URL}authenticate/`,
               {
                 method: "post",
                 headers: {
@@ -41,6 +41,7 @@ function LoginForm() {
               }
             );
             const data = await response.json();
+            window.localStorage.setItem("username", credentials.username);
             window.localStorage.setItem("token", data.token);
             window.localStorage.setItem("id", data.id);
             if (data.token === undefined) {
@@ -65,17 +66,17 @@ function LoginForm() {
             Login
             </h1>
 
-            <Form.Group className="mb-3" controlId="formBasicUsername">
+            <Form.Group className="mb-3">
                 <Form.Label for="username">Username</Form.Label>
                 <Form.Control type="text" placeholder="Enter Username" id="username" onChange={handleChange} />
                 </Form.Group>
 
-            <Form.Group className="mb-3" controlId="formBasicPassword">
+            <Form.Group className="mb-3">
                 <Form.Label for="password">Password</Form.Label>
                 <Form.Control type="password" placeholder="Password" id="password" onChange={handleChange} />
             </Form.Group>
                 
-            <Button className="w-100 btn btn-lg fw-bold" variant="primary" type="submit" onSubmit={handleSubmit}>
+            <Button className="w-100 btn btn-lg fw-bold" variant="primary" type="submit" onClick={handleSubmit}>
             Login
             </Button>
         </Form>

@@ -11,7 +11,6 @@ function RegisterUserForm() {
         password: "",
         email: "",
     });
-    const token =  window.localStorage.getItem("token")
 
 // Hooks
     const navigate = useNavigate();
@@ -25,30 +24,12 @@ function RegisterUserForm() {
         }));
     };
 
-    const postData = async () => {
-        const response = await fetch(
-            `${process.env.REACT_APP_API_URL}api-token-auth/`,
-            {
-              method: "post",
-              headers: {
-                "Content-Type": "application/json",
-                "Authorization": `Bearer ${token}`
-              },
-              body: JSON.stringify({
-                  username: credentials.username,
-                  password: credentials.password,
-              }),
-            }
-          );
-          return response.json();
-        };
-
     const handleSubmit = async (event) => {
         event.preventDefault();
         if (credentials.username && credentials.password) {
           try {
             const response = await fetch(
-              `${process.env.REACT_APP_API_URL}users/`,
+              `${process.env.REACT_APP_API_URL}register/`,
               {
                 method: "post",
                 headers: {
@@ -63,10 +44,6 @@ function RegisterUserForm() {
               }
             );
             const data = await response.json();
-            window.localStorage.setItem("id",data.id);
-            postData().then((response) => {
-                window.localStorage.setItem("token", response.token);
-            });
             
             if (data.token === undefined) {
                 return (
@@ -90,17 +67,22 @@ function RegisterUserForm() {
             Create An Account
             </h1>
 
-            <Form.Group className="mb-3" controlId="formBasicUsername">
-                <Form.Label for="username">Username</Form.Label>
+            <Form.Group className="mb-3">
+                <Form.Label htmlFor="username">Username:</Form.Label>
                 <Form.Control type="text" placeholder="Enter Username" id="username" onChange={handleChange} />
-                </Form.Group>
+              </Form.Group>
 
-            <Form.Group className="mb-3" controlId="formBasicPassword">
-                <Form.Label for="password">Password</Form.Label>
+            <Form.Group className="mb-3">
+                <Form.Label htmlFor="email">Email:</Form.Label>
+                <Form.Control type="email" placeholder="Enter Email Address" id="email" onChange={handleChange} />
+            </Form.Group>
+
+            <Form.Group className="mb-3">
+                <Form.Label htmlFor="password">Password:</Form.Label>
                 <Form.Control type="password" placeholder="Password" id="password" onChange={handleChange} />
             </Form.Group>
                 
-            <Button className="w-100 btn btn-lg fw-bold" variant="primary" type="submit" onSumbit={handleSubmit}>
+            <Button className="w-100 btn btn-lg fw-bold" variant="primary" type="submit" onClick={handleSubmit}>
             Create Account
             </Button>
         </Form>

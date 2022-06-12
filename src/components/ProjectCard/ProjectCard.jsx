@@ -1,37 +1,30 @@
-import React, { useState } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 
 // Bootstrap
-import { Card, Button } from "react-bootstrap";
-
-//Components
-import PledgeModal from "../PledgeModal/PledgeModal";
+import { Card } from "react-bootstrap";
 
 function ProjectCard({ projectData }) {
-    // States
-    const [show, setShow] = useState(false);
 
-    // Actions
-    const handleClose = () => setShow(false);
-    const handleShow = () => setShow(true);
+    const maths = projectData.amount_raised/projectData.goal_amount;
+    const scale = `width: '${maths}%'`;
 
     return (
-        <div className="col">
+        <div className="col p-5">
             <Card className="card shadow-sm" style={{ width: '18rem' }}>
                 <Link to={`/project/${projectData?.id}`}>
-                    <Card.Img variant="top" src={projectData?.img} />
+                    <Card.Img variant="top" src={projectData?.image} />
                     <Card.Body>
                         <Card.Title>{projectData?.title}</Card.Title>
-                        <div class="progress">
-                            <div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow={projectData?.amount_raised} aria-valuemin="0" aria-valuemax={projectData?.goal_amount}></div>
+                        <div className="progress">
+                            <div className="progress-bar" role="progressbar" style={{ scale }} aria-valuenow={projectData?.amount_raised} aria-valuemin="0" aria-valuemax={projectData?.goal_amount}></div>
                         </div>
                     </Card.Body>
                 </Link>
                 <Card.Body>
-                    <Button variant="primary" onClick={handleShow}>
+                    <a href={`/pledges/${projectData?.id}`} class="btn btn-primary text-light fw-bold" role="button">
                         Pledge
-                    </Button>
-                    <PledgeModal projectData={projectData} />
+                    </a>
                 </Card.Body>
             
             </Card>

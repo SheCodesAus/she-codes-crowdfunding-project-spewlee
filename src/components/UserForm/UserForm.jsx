@@ -30,7 +30,7 @@ function UserForm({ userData }) {
             const res = await fetch(
               `${process.env.REACT_APP_API_URL}users/${id}`,
               {
-                method: "post",
+                method: "put",
                 headers: ({
                   "Content-Type": "application/json",
                   "Authorization": `Bearer ${token}`,
@@ -58,11 +58,11 @@ function UserForm({ userData }) {
         </h1>
 
         <Form.Group className="mb-3">
-            <Form.Label for="profile_pic">Username</Form.Label>
+            <Form.Label htmlFor="profile_pic">Profile Photo:</Form.Label>
             <Form.Control type="text" placeholder="Enter Profile Photo URL" id="profile_pic" onChange={handleChange} />
             </Form.Group>
             
-        <Button className="w-100 btn btn-lg fw-bold" variant="primary" type="submit" onSubmit={handleSubmit}>
+        <Button className="w-100 btn btn-lg fw-bold" variant="primary" type="submit" onClick={handleSubmit}>
         Update
         </Button>
       </Form>

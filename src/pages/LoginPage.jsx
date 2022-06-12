@@ -11,7 +11,7 @@ function LoginPage() {
         <div>
             <LoginForm />
 
-            <Container className="m-5 text-center" >
+            <Container className="m-5 text-center mx-auto" >
                 <h3>Don't have an account?</h3>
                 <a href="/register" class="btn btn-secondary text-light fw-bold" role="button">
                     Create An Account

@@ -1,8 +1,11 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 import { Form, Button, Alert, Container } from "react-bootstrap";
 
 function PledgeForm({ projectId }) {
+    const navigate = useNavigate();
+
     // States
     const token =  window.localStorage.getItem("token")
     const [pledge, setPledges] = useState({
@@ -43,6 +46,7 @@ function PledgeForm({ projectId }) {
             <Alert variant="success">
                 <Alert.Heading>Pledged Successfully!</Alert.Heading>
             </Alert>
+            navigate("/");
           } catch (err) {
             console.log(err);
           }
@@ -67,21 +71,21 @@ function PledgeForm({ projectId }) {
             </h1>
 
             <Form.Group className="mb-3">
-                <Form.Label for="amount">Amount:</Form.Label>
+                <Form.Label htmlFor="amount">Amount:</Form.Label>
                 <Form.Control type="number" placeholder="Enter Pledge Amount.." id="amount" onChange={handleChange} />
                 </Form.Group>
 
             <Form.Group className="mb-3">
-                <Form.Label for="pledgeComment">Comment:</Form.Label>
+                <Form.Label htmlFor="pledgeComment">Comment:</Form.Label>
                 <Form.Control type="text" placeholder="Enter Comment.." id="pledgeComment" onChange={handleChange} />
             </Form.Group>
 
             <Form.Group className="form-check mb-3">
-                <Form.Label for="anonymous">Anonymous:</Form.Label>
+                <Form.Label htmlFor="anonymous">Anonymous:</Form.Label>
                 <Form.Control type="checkbox" id="anonymous" onChange={handleChange} />
             </Form.Group>
 
-            <Button className="w-100 btn btn-lg fw-bold" variant="primary" type="submit" onSubmit={handleSubmit}>
+            <Button className="w-100 btn btn-lg fw-bold" variant="primary" type="submit" onClick={handleSubmit}>
             Submit Pledge
             </Button>
         </Form>

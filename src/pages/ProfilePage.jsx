@@ -4,11 +4,14 @@ import { useParams } from "react-router-dom";
 //Components
 import UserForm from "../components/UserForm/UserForm";
 
+// Bootstrap
+import { Container } from "react-bootstrap";
+
 
 function ProfilePage() {
 
     // State
-    const [profileData, setProfileData] = useState();
+    const [profileData, setProfileData] = useState([]);
     
     // Hooks
     const { id } = useParams();
@@ -27,11 +30,11 @@ function ProfilePage() {
 
 // Normal State
     return (
-        <div>
+        <Container className="m-2 p-2 text-center mx-auto">
             <h1>Welcome {profileData.username}!</h1>
             <h3>Would you like to update your account?</h3>
             <UserForm />
-        </div>
+        </Container>
     );
 }
 
