@@ -1,27 +1,38 @@
-import React from "react";
-import { useNavigate } from "react-router-dom";
+import React from 'react';
 
-//CSS
-import "./HeroImage.css";
+// Bootstrap
+import { Button, Container } from 'react-bootstrap';
 
+// Components
+import LoginForm from '../LoginForm/LoginForm';
 
-
+// Custom Styles
+import './HeroImage.css';
+  
 function HeroImage() {
 
-    // Hooks
-    const navigate = useNavigate("/create-project");
+    
+  return (
+    <>
+        <div className="fluid hero-image p-5 mb-4" >
 
-    // Actions
-    const handleClick = () => {
-        return navigate;
-    }
+            <Container className="row align-items-center g-lg-5 py-5">
+                <Container className="col-lg-7 text-center text-lg-start">
+                    <h1 className="display-5 fw-bold title">Sport Support</h1>
+                    <p class="lead fw-bold title">Achieve your team's dream</p>
+                    <Button variant="primary">
+                    Post a Project
+                    </Button>
+                </Container>
 
-    return(
-        <div className="heroImage">
-          <button onclick={ handleClick }>Post a Project</button>
-          <h1>Achieve your team's dream</h1>
+            <Container className="col-md-10 mx-auto col-lg-5">
+                <LoginForm />
+            </Container>
+                
+            </Container>
         </div>
-    )
-};
+    </>
+  );
+}
 
 export default HeroImage;

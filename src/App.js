@@ -2,8 +2,9 @@ import React from "react";
 import { BrowserRouter as Router, Routes, Route, useNavigate } from "react-router-dom";
 
 // Components
-import Nav from "./components/Nav/Nav";
+import NavBar from "./components/Nav/Nav";
 import HeroImage from "./components/HeroImage/HeroImage";
+import Footer from "./components/Footer/Footer";
 
 // Pages
 import HomePage from "./pages/HomePage";
@@ -13,15 +14,13 @@ import ProfilePage from "./pages/ProfilePage";
 import RegisterUserPage from "./pages/RegisterUserPage";
 import CreateProjectPage from "./pages/CreateProjectPage";
 
-// Styles
-import "./App.css";
 
 
 function App() {
   return (
     <Router>
       <div>
-        <Nav />
+        <NavBar />
         <HeroImage />
         <Routes>
           <Route path="/register" element={<RegisterUserPage />} />
@@ -31,6 +30,7 @@ function App() {
           <Route path="/project/:id" element={<ProjectPage />} />
           <Route path="/" element={<HomePage />} />
         </Routes>
+        <Footer />
       </div>
     </Router>
   );

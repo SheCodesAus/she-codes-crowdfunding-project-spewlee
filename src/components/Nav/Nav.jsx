@@ -1,61 +1,43 @@
-import React, { useState } from "react";
-import { Link, useNavigate, Router, useParams } from "react-router-dom";
+import React from "react";
+import { Link } from "react-router-dom";
 
-// Styles
-import "./Nav.css"
+// Bootstrap
+import { Navbar, Nav, NavLink, NavItem } from 'react-bootstrap';
+
+// Custom Styles
+import './Nav.css';
 
 // Images
 import logo from "../../images/SportSupport.png"
 
-function Nav() {
-
-    //State
-    const [usersData, setUsersData] = useState();
-
-    //Hooks
-    const navigate = useNavigate();
-    const { id } = useParams();
-
-    const username = window.localStorage.getItem("id")
-
-
-    const reloadPage = () => {
-        navigate("/login")
-    }
-
-    const handleSignOut = () => {
-        window.localStorage.removeItem("token");
-        window.localStorage.removeItem("id")
-        reloadPage()
-    }
-
-    const checkUser = () => {
-        const isUserLoggedIn = !!window.localStorage.getItem("token");
-        return isUserLoggedIn ? <button className="nav-button" onClick={handleSignOut}>Sign out</button> : <button className="nav-button" onClick={reloadPage}>Login</button>
-    }
-
-    const checkProfile = () => {
-        const isUserLoggedIn = !!window.localStorage.getItem("token");
-        return !isUserLoggedIn ? <div className="nav-button"><Link to="/register">Create account</Link></div> : <div className="nav-button"><Link to={`users/${username}`}>My Profile</Link></div>
-    }
-
-    const createProject = () => {
-        const isUserLoggedIn = !!window.localStorage.getItem("token");
-        return !isUserLoggedIn ? <div className="nav-button"><Link to="/create-project">Create Project</Link></div> : <div></div>
-    }
+function NavBar() {
     
     return(
-        <nav className="nav">
-            <div className="logoDiv">
-                <Link to="/"><img className="logo" src={logo}/></Link>
-            </div>
-            <div className="createProject">{createProject()}</div>
-            <div className="profileBut">{checkProfile()}</div>
-            <div className="homeBut"><Link to="/">Home</Link></div>
-            <div className="log">{checkUser()}</div>
-        </nav>
+        <>
+            <Navbar collapseOnSelect expand="xl" bg="dark" variant="dark" className="sticky-top ps-5 pe-5">
+                <Navbar.Brand href="/"><img src={logo} alt="Sport Support Logo" height="100"/></Navbar.Brand> 
+                <Navbar.Toggle aria-controls="navbarScroll" data-bs-target="#navbarScroll" />
+                <Navbar.Collapse id="navbarScroll" className="justify-content-end">
+                    <Nav>
+                       
+                        <NavItem>
+                            <NavLink className="mx-auto fs-3" as={Link} to="/">Home</NavLink>
+                        </NavItem>
+                        
+                        <NavItem>
+                            <NavLink className="mx-auto fs-3" as={Link} to="/login">Login</NavLink>
+                        </NavItem>
+                        
+                        <NavItem>
+                            <NavLink className="mx-auto fs-3" as={Link} to="/create-project">Create Project</NavLink>
+                        </NavItem>
+                        
+                    </Nav>
+                </Navbar.Collapse>
+            </Navbar>
+        </>
     )
 }
 
 
-export default Nav;
+export default NavBar;
