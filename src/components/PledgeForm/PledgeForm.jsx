@@ -55,10 +55,10 @@ function PledgeForm({ projectId }) {
 
     if (!token) {
         return (
-            <Container>
-                <p class="lead fw-bold title">Please Login To Pledge</p>
-                <a href="/login" class="btn btn-secondary text-light fw-bold" role="button">
-                Login
+            <Container className="mx-auto fluid text-center align-items-center pt-5 ">
+                <h3 class="lead fw-bold title text-secondary">Please Login To Pledge</h3>
+                <a href="/login" class="btn btn-primary text-light fw-bold" role="button">
+                Pledge
                 </a>
             </Container>
         );

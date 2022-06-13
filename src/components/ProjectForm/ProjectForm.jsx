@@ -65,13 +65,13 @@ function ProjectForm() {
 
     if (!token) {
         return (
-            <Container>
-                <p class="lead fw-bold title">Please Login To Pledge</p>
-                <a href="/login" class="btn btn-secondary text-light fw-bold" role="button">
+            <Container className="mx-auto fluid text-center align-items-center pt-5 ">
+                <h3 class="lead fw-bold title text-secondary">Please Login To Create A Project</h3>
+                <a href="/login" class="btn btn-primary text-light fw-bold" role="button">
                 Login
                 </a>
             </Container>
-        );
+        )
     }
 
     return (
